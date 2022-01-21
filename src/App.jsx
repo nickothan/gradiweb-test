@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react"
 
+import Item from "./pages/Item"
+
 export default function App() {
   const [error, setError] = useState(null)
   const [isLoaded, setIsLoaded] = useState(null)
@@ -27,6 +29,6 @@ export default function App() {
   } else if (!isLoaded) {
     return <div>Loading...</div>
   } else {
-    return <div> Data cargada{console.log(item)}</div>
+    return <Item {...item} />
   }
 }
