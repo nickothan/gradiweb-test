@@ -1,8 +1,18 @@
+import { useState } from "react"
+
 //* Import styles
-import { Contenedor, Images, Contenido } from "./styles"
+import {
+  Contenedor,
+  Images,
+  Contenido,
+  FormFooter,
+  ButtonsForm,
+  HeadContenido
+} from "./styles"
 
 //* Import Components
 import RadioBtn from "../../components/Form/RadioBtn"
+import RadioBtnSquare from "../../components/Form/RadioBtnSquare"
 
 export default function Item({
   images = [],
@@ -12,50 +22,54 @@ export default function Item({
   compare_at_price,
   ...args
 }) {
-  console.log(args)
+  const [contador, setContador] = useState(0)
+  const [totalPrice, setTotalPrice] = useState(0)
   return (
     <Contenedor>
       <Images>
         {images.map((img) => (
-          <img src={img} alt="" />
+          <img src={img} alt="" key={Math.random() * 10} />
         ))}
       </Images>
 
       <Contenido>
-        <div>
-          <span></span>
+        <HeadContenido>
+          <span>lorem ipsum.</span>
           <h2>{title}</h2>
           <p>
-            $ {price} <span>$ {compare_at_price}</span>
+            $ {price} / <span>$ {compare_at_price}</span>
           </p>
-        </div>
+        </HeadContenido>
         <form>
           <div>
             <h4>Color:</h4>
-            {options[0].values.map((value) => (
+            {/* {options[0].values.map((value) => (
               <RadioBtn key={Math.random() * 10} value={value} />
-            ))}
+            ))} */}
           </div>
           <div>
             <h4>Size:</h4>
             {/* {options[1].values.map((value) => (
-              <label key={Math.random() * 10}>
-                <input type="radio" value={value} name="color" />
-                {value}
-              </label>
+              <RadioBtnSquare key={Math.random() * 10} value={value} />
             ))} */}
           </div>
-          <div>
+          <FormFooter>
             <div>
-              <button type="button">+</button>
-              <input type="number" name="contador" />
-              <button type="button">-</button>
+              <button type="button" onClick={() => setContador(contador + 1)}>
+                +
+              </button>
+              <p>{contador}</p>
+              <button type="button" onClick={() => setContador(contador - 1)}>
+                -
+              </button>
             </div>
-            <p>Total price: #</p>
-          </div>
+            <p>Total price: $ {totalPrice}</p>
+          </FormFooter>
 
-          <button type="button">Agregar a favoritos</button>
-          <button type="submit">Agregar al carrito</button>
+          <ButtonsForm>
+            <button type="button">Agregar a favoritos</button>
+            <button type="submit">Agregar al carrito</button>
+          </ButtonsForm>
         </form>
 
         <div></div>
