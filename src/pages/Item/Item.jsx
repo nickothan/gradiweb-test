@@ -7,11 +7,13 @@ import {
   Contenido,
   FormFooter,
   ButtonsForm,
-  HeadContenido
+  HeadContenido,
+  LabelRadio,
+  LabelBtn
 } from "./styles"
 
 //* Import Components
-import RadioBtn from "../../components/Form/RadioBtn"
+/* import RadioBtn from "../../components/Form/RadioBtn" */
 import RadioBtnSquare from "../../components/Form/RadioBtnSquare"
 
 export default function Item({
@@ -19,11 +21,38 @@ export default function Item({
   options = [],
   title,
   price,
+  id,
   compare_at_price,
   ...args
 }) {
   const [contador, setContador] = useState(0)
   const [totalPrice, setTotalPrice] = useState(0)
+
+  const [compra, setCompra] = useState({
+    idcompra: id,
+    title: title,
+    price: price,
+    color: "",
+    size: "",
+    amount: 0,
+    totalCompra: 0
+  })
+
+  const inputValueChange = (event) => {
+    setCompra({
+      ...compra,
+      [event.target.name] : event.target.value
+    })
+  } 
+
+  const enviarCompra = (event) => {
+    event.preventDefault()
+
+    setTotalPrice()
+
+    console.log(compra)
+
+  }
   return (
     <Contenedor>
       <Images>
@@ -40,30 +69,46 @@ export default function Item({
             $ {price} / <span>$ {compare_at_price}</span>
           </p>
         </HeadContenido>
-        <form>
+        <form onSubmit={enviarCompra}>
           <div>
             <h4>Color:</h4>
-            {/* {options[0].values.map((value) => (
-              <RadioBtn key={Math.random() * 10} value={value} />
-            ))} */}
+           
+               {options[0].values.map((value) => (
+                  <LabelRadio key={Math.random() * 10}>
+                    <input type="radio" value={value} name="color" onChange={inputValueChange} />
+                    {value}
+                  </LabelRadio>
+            ))}   
           </div>
           <div>
             <h4>Size:</h4>
-            {/* {options[1].values.map((value) => (
-              <RadioBtnSquare key={Math.random() * 10} value={value} />
-            ))} */}
+              
+             {options[1].values.map((value) => (
+              <LabelBtn key={Math.random() * 10}>
+                <input type="radio" value={value} name="size" onChange={inputValueChange} />
+                {value}
+              </LabelBtn>
+            ))} 
           </div>
           <FormFooter>
             <div>
-              <button type="button" onClick={() => setContador(contador + 1)}>
+              <button type="button" onClick={() => setCompra({
+                ...compra,
+                amount : compra.amount + 1, totalCompra : compra.totalCompra + price/10
+              })}>
                 +
               </button>
-              <p>{contador}</p>
-              <button type="button" onClick={() => setContador(contador - 1)}>
+              <p>{compra.amount}</p>
+              
+
+              <button type="button" onClick={() => setCompra({
+                ...compra,
+                amount : compra.amount - 1,  totalCompra : compra.totalCompra - price
+              })}>
                 -
               </button>
             </div>
-            <p>Total price: $ {totalPrice}</p>
+            <p>Total price: $ {compra.totalCompra}</p>
           </FormFooter>
 
           <ButtonsForm>

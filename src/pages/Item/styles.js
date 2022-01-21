@@ -17,20 +17,28 @@ export const Contenido = styled.div`
     margin-top: 20px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+   
 
     div {
+      padding: 10px ;
       &:nth-child(1) {
+        
+        padding-bottom: 20px ;
         border-top: 1px solid #000;
         border-bottom: 1px solid #000;
       }
       &:nth-child(2) {
+        padding-bottom: 20px ;
         border-bottom: 1px solid #000;
       }
       &:nth-child(3) {
-        padding: 10px 0;
+        padding: 20px 10px;
+        
         div {
-          border: none;
+          padding: 10px ;
+          border: 1px solid #5e5e5e;
+          border-radius: 5px;
+          
         }
       }
     }
@@ -79,7 +87,12 @@ export const FormFooter = styled.div`
         box-shadow: 0px 5px 20px -5px #000;
         transform: scale(0.9);
       }
+
     }
+
+     input {
+       width: 20px;
+     }
   }
 
   p:last-child {
@@ -124,5 +137,18 @@ export const HeadContenido = styled.div`
   p {
     font-size: 28px;
     font-weight: 600;
+  }
+`
+
+export const LabelRadio = styled.label`
+  display: inline-block;
+`
+export const LabelBtn = styled.label`
+  display: inline-block;
+  padding: 5px;
+  border: 1px solid #000;
+
+  input {
+    display: none;
   }
 `
