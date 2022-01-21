@@ -3,7 +3,13 @@ import styled from "styled-components"
 export const Contenedor = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
+  margin: auto;
+  max-width: 1024px;
 `
+export const Contenido = styled.div`
+  padding: 30px;
+`
+
 export const Images = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -21,4 +27,3 @@ export const Images = styled.div`
     }
   }
 `
-export const Contenido = styled.div``

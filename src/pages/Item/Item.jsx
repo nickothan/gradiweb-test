@@ -1,6 +1,9 @@
 //* Import styles
 import { Contenedor, Images, Contenido } from "./styles"
 
+//* Import Components
+import RadioBtn from "../../components/Form/RadioBtn"
+
 export default function Item({
   images = [],
   options = [],
@@ -13,10 +16,9 @@ export default function Item({
   return (
     <Contenedor>
       <Images>
-        <img />
-        <img src="" alt="" />
-        <img src="" alt="" />
-        <img src="" alt="" />
+        {images.map((img) => (
+          <img src={img} alt="" />
+        ))}
       </Images>
 
       <Contenido>
@@ -31,20 +33,17 @@ export default function Item({
           <div>
             <h4>Color:</h4>
             {options[0].values.map((value) => (
-              <label>
-                <input type="radio" value={value} name="color" />
-                {value}
-              </label>
+              <RadioBtn key={Math.random() * 10} value={value} />
             ))}
           </div>
           <div>
             <h4>Size:</h4>
-            {options[1].values.map((value) => (
+            {/* {options[1].values.map((value) => (
               <label key={Math.random() * 10}>
                 <input type="radio" value={value} name="color" />
                 {value}
               </label>
-            ))}
+            ))} */}
           </div>
           <div>
             <div>
