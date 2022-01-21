@@ -6,6 +6,13 @@ export const Contenedor = styled.div`
   grid-template-columns: 3fr 4fr;
   margin: 20px auto;
   max-width: 1024px;
+
+  @media (max-width: 768px) {
+
+  }
+  @media (max-width: 425px) {
+    grid-template-columns: 1fr;
+  }
 `
 export const Contenido = styled.div`
   display: flex;
@@ -28,8 +35,17 @@ export const Contenido = styled.div`
         border-bottom: 1px solid #000;
       }
       &:nth-child(2) {
+
         padding-bottom: 20px ;
         border-bottom: 1px solid #000;
+
+        div{
+          padding: 0;
+          display: flex;
+          gap: 10px;
+
+          border: none;
+        }
       }
       &:nth-child(3) {
         padding: 20px 10px;
@@ -56,9 +72,11 @@ export const Images = styled.div`
     width: 100px;
     height: 100px;
 
+
     &:first-child {
       width: 90%;
       height: auto;
+      
     }
   }
 `
@@ -106,6 +124,11 @@ export const ButtonsForm = styled.div`
   grid-template-columns: 1fr 1fr;
   grid-gap: 20px;
 
+  @media (max-width: 425px){
+    grid-template-columns: 1fr ;
+
+  }
+
   button {
     padding: 7px;
 
@@ -144,7 +167,7 @@ export const LabelRadio = styled.label`
   display: inline-block;
 `
 export const LabelBtn = styled.label`
-  display: inline-block;
+  display: block;
   padding: 5px;
   border: 1px solid #000;
 

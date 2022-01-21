@@ -83,12 +83,14 @@ export default function Item({
           <div>
             <h4>Size:</h4>
               
+              <div>
              {options[1].values.map((value) => (
               <LabelBtn key={Math.random() * 10}>
                 <input type="radio" value={value} name="size" onChange={inputValueChange} />
                 {value}
               </LabelBtn>
             ))} 
+              </div>
           </div>
           <FormFooter>
             <div>
@@ -103,7 +105,7 @@ export default function Item({
 
               <button type="button" onClick={() => setCompra({
                 ...compra,
-                amount : compra.amount - 1,  totalCompra : compra.totalCompra - price
+                amount : compra.amount - 1,  totalCompra : compra.totalCompra - price/10
               })}>
                 -
               </button>
