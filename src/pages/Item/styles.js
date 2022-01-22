@@ -8,7 +8,6 @@ export const Contenedor = styled.div`
   max-width: 1024px;
 
   @media (max-width: 768px) {
-
   }
   @media (max-width: 425px) {
     grid-template-columns: 1fr;
@@ -24,22 +23,28 @@ export const Contenido = styled.div`
     margin-top: 20px;
     display: flex;
     flex-direction: column;
-   
 
     div {
-      padding: 10px ;
+      padding: 10px;
       &:nth-child(1) {
-        
-        padding-bottom: 20px ;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding-bottom: 20px;
         border-top: 1px solid #000;
         border-bottom: 1px solid #000;
+        div {
+          border: none;
+        }
       }
       &:nth-child(2) {
-
-        padding-bottom: 20px ;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        padding-bottom: 20px;
         border-bottom: 1px solid #000;
 
-        div{
+        div {
           padding: 0;
           display: flex;
           gap: 10px;
@@ -49,12 +54,11 @@ export const Contenido = styled.div`
       }
       &:nth-child(3) {
         padding: 20px 10px;
-        
+
         div {
-          padding: 10px ;
+          padding: 10px;
           border: 1px solid #5e5e5e;
           border-radius: 5px;
-          
         }
       }
     }
@@ -72,11 +76,9 @@ export const Images = styled.div`
     width: 100px;
     height: 100px;
 
-
     &:first-child {
       width: 90%;
       height: auto;
-      
     }
   }
 `
@@ -95,6 +97,7 @@ export const FormFooter = styled.div`
       border-radius: 3px;
       box-shadow: 0px 5px 20px -4px #000;
       transition: 0.3s all ease-in-out;
+      cursor: pointer;
 
       &:hover {
         box-shadow: 0px 5px 20px -3px #000;
@@ -105,12 +108,11 @@ export const FormFooter = styled.div`
         box-shadow: 0px 5px 20px -5px #000;
         transform: scale(0.9);
       }
-
     }
 
-     input {
-       width: 20px;
-     }
+    input {
+      width: 20px;
+    }
   }
 
   p:last-child {
@@ -124,9 +126,8 @@ export const ButtonsForm = styled.div`
   grid-template-columns: 1fr 1fr;
   grid-gap: 20px;
 
-  @media (max-width: 425px){
-    grid-template-columns: 1fr ;
-
+  @media (max-width: 425px) {
+    grid-template-columns: 1fr;
   }
 
   button {
@@ -135,6 +136,7 @@ export const ButtonsForm = styled.div`
     border-radius: 5px;
     transition: 0.3s all ease-in-out;
     box-shadow: 0px 5px 20px -10px #000;
+    cursor: pointer;
 
     &:hover {
       box-shadow: 0px 5px 25px -10px #000;
@@ -163,13 +165,90 @@ export const HeadContenido = styled.div`
   }
 `
 
-export const LabelRadio = styled.label`
+export const LabelRadio = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &:nth-child(1) {
+    border: none;
+  }
   display: inline-block;
+
+  label {
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+    padding: 10px;
+    width: 17px;
+    height: 17px;
+    border-radius: 100%;
+    transition: all 0.3s ease;
+    background-color: ${({ children }) => children[0]?.props.value};
+
+    box-shadow: 0 5px 10px -5px #000;
+    transition: 0.5s all ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+      
+      
+      color: #000;
+      
+      &:before {
+        content: "";
+        position: absolute;
+        display: block;
+        top: -5px;
+        left: -5px;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        background: none;
+        border: 3px solid royalblue;
+      }
+      &:active {
+        transform: scale(0.95);
+      }
+    }
+    }
+  }
+
+  input {
+    display: none;
+
+    &:checked + label:before {
+      content: "";
+      position: absolute;
+      display: block;
+      top: -5px;
+      left: -5px;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: none;
+      border: 3px solid royalblue;
+    }
+  }
 `
 export const LabelBtn = styled.label`
   display: block;
-  padding: 5px;
-  border: 1px solid #000;
+  padding: 7px;
+  max-width: 60px;
+  border: 1px solid grey;
+  color: grey;
+  border-radius: 5px;
+  box-shadow: 0 5px 10px -5px #000;
+  transition: 0.4s all ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.05);
+    border: 1px solid #000;
+    color: #000;
+  }
+  &:active {
+    transform: scale(0.95);
+  }
 
   input {
     display: none;

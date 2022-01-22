@@ -24,10 +24,14 @@ export default function Item({
   const [contador, setContador] = useState(0)
   const [totalPrice, setTotalPrice] = useState(0)
 
+  const [selectRadio, setSelectRadio] = useState(false)
+
   const [compra, setCompra] = useState({
+
     id: id,
     title: title,
     price: price,
+
     color: "",
     size: "",
     amount: 0,
@@ -37,7 +41,12 @@ export default function Item({
   const inputValueChange = (event) => {
     setCompra({
       ...compra,
-      [event.target.name]: event.target.value
+
+      [event.target.name]: event.target.value,
+      id: id,
+      title: title,
+      price: price
+
     })
   }
 
@@ -74,9 +83,10 @@ export default function Item({
                   type="radio"
                   value={value}
                   name="color"
+                  id={value}
                   onChange={inputValueChange}
                 />
-                {value}
+                <label htmlFor={value}></label>
               </LabelRadio>
             ))}
           </div>
@@ -85,7 +95,7 @@ export default function Item({
 
             <div>
               {options[1]?.values.map((value) => (
-                <LabelBtn key={Math.random() * 10}>
+                <LabelBtn key={Math.random() * 10} value={value}>
                   <input
                     type="radio"
                     value={value}
