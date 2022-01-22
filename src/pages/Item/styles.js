@@ -71,13 +71,14 @@ export const Images = styled.div`
   align-items: center;
   justify-content: center;
   gap: 10px;
+  height: fit-content;
 
   img {
     width: 100px;
     height: 100px;
 
     &:first-child {
-      width: 90%;
+      width: 400px;
       height: auto;
     }
   }
