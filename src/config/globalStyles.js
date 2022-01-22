@@ -93,4 +93,8 @@ p{
     
   }
 }
+
+a + button {
+	cursor: pointer;
+}
 `
