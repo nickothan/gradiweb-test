@@ -27,9 +27,11 @@ export default function Item({
   const [selectRadio, setSelectRadio] = useState(false)
 
   const [compra, setCompra] = useState({
-    id: 0,
-    title: "",
-    price: "",
+
+    id: id,
+    title: title,
+    price: price,
+
     color: "",
     size: "",
     amount: 0,
@@ -39,10 +41,12 @@ export default function Item({
   const inputValueChange = (event) => {
     setCompra({
       ...compra,
+
       [event.target.name]: event.target.value,
       id: id,
       title: title,
       price: price
+
     })
   }
 
