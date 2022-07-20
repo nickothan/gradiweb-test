@@ -21,10 +21,6 @@ export default function Item({
   compare_at_price,
   ...args
 }) {
-  const [contador, setContador] = useState(0)
-  const [totalPrice, setTotalPrice] = useState(0)
-
-  const [selectRadio, setSelectRadio] = useState(false)
 
   const [compra, setCompra] = useState({
 
@@ -52,10 +48,10 @@ export default function Item({
 
   const enviarCompra = (event) => {
     event.preventDefault()
+    if(compra.totalCompra >= 0) { 
 
-    setTotalPrice()
-
-    console.log(compra)
+      console.log(compra)
+    }
   }
   return (
     <Contenedor>
@@ -124,12 +120,15 @@ export default function Item({
 
               <button
                 type="button"
-                onClick={() =>
-                  setCompra({
-                    ...compra,
-                    amount: compra.amount - 1,
-                    totalCompra: compra.totalCompra - price
-                  })
+                onClick={() =>{
+                  if (compra.amount >= 1) {
+                    setCompra({
+                      ...compra,
+                      amount: compra.amount - 1,
+                      totalCompra: compra.totalCompra - price
+                    })
+                  }
+                }
                 }>
                 -
               </button>
